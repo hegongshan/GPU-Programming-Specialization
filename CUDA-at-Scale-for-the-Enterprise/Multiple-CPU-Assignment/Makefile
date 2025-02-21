@@ -13,15 +13,15 @@ clean:
 run: run_producer_consumer_a run_producer_consumer_b run_multicpu_cuda
 
 run_multicpu_cuda:
-	# TODO: add an argument -- number of iterations
+	@# TODO: add an argument -- number of iterations
 	./multi_cpu.exe 10
 
 run_producer_consumer_a:
-	# TODO: add an argument -- number of iterations
+	@# TODO: add an argument -- number of iterations
 	python3 producer_consumer.py a 128 10
 
 run_producer_consumer_b:
-	# TODO: add an argument -- number of iterations
+	@# TODO: add an argument -- number of iterations
 	python3 producer_consumer.py b 128 10
 
 all: clean build run
