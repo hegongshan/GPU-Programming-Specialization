@@ -164,8 +164,16 @@ __host__ long* mergesort(long* data, long size, dim3 threadsPerBlock, dim3 block
     }
 
     // Free the GPU memory
-    cudaFree(A);
-    cudaFree(B);
+    err = cudaFree(A);
+    if (err != cudaSuccess) {
+        fprintf(stderr, "Failed to free device vector A (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
+    err = cudaFree(B);
+    if (err != cudaSuccess) {
+        fprintf(stderr, "Failed to free device vector B (error code %s)!\n", cudaGetErrorString(err));
+        exit(EXIT_FAILURE);
+    }
 
     return data;
 }
